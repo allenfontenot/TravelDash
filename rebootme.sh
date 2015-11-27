@@ -1,4 +1,4 @@
-cd /home/pi/TimerTest
+cd /home/pi/TravelDash
 sudo ./rebootlog.py
 
 sleep 30
