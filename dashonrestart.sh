@@ -1,2 +1,2 @@
-cd /home/pi/TimerTest
-sudo ./Timer4.py
+cd /home/pi/TravelDash
+sudo ./TravelDash.py
