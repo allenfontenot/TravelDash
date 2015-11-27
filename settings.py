@@ -1,15 +1,31 @@
 #!/usr/bin/env python
-
 import pygame
 import pygame.gfxdraw
 from pygame.locals import *
 
 pygame.init()
-		#Store info
+
+#################Store Info#################
 NSN = '6631'
+zone1 = 'Lobby'
+zone2 = 'Stockroom'
+zone3 = 'Drive Thru'
+zone4 = ''
+zone5 = ''
+zone6 = ''
 
-		#POINTS
+#################Alert Info#################
+#time to change circle colors
+yellowLimit = 60
+redLimit = 120
+#time to wait after colors change to send notification
+mailwait1 = 75
+mailwait2 = 120
+#minimum time between email alerts in seconds 30min = 1800
+tba = 1800
 
+
+#################POINTS#################
 #apron center
 ac =  (680,  100); acx = 680; acy = 100
 #circle center and xy
@@ -41,8 +57,8 @@ compy = acy
 c1tx = comp1x; c2tx = comp2x; c3tx = comp3x
 cty = compy+compr-25
 
-        #ui colors
-
+################ui colors
+		
 #circles
 ccolor = (222,222,222)
 #background
@@ -68,30 +84,19 @@ of  = pygame.font.SysFont("freesans",48)
 cf  = pygame.font.SysFont("freesans",64)
 cff = pygame.font.SysFont("freesans",24)
 
-zone1 = 'Lobby'
-zone2 = 'Stockroom'
-zone3 = 'Drive Thru'
-
+#Complication Names
 c1t = "Average"
 c2t = "Longest"
 c3t = "Now"
 
+#Initalized Variables
 time1 = []
 time2 = []
 time3 = []
 
-FMT = '%Y-%m-%d %H:%M:%S.%f'
-
 lastTime = [0,0,0]
 timeDiff = [0,0,0]
-
 nowMinutes = [0,0,0]
 thenMinutes = [0,0,0]
-#time to change circle colors
-yellowLimit = 60
-redLimit = 120
-#time to wait after colors change to send notification
-mailwait1 = 75
-mailwait2 = 120
-#minimum time between email alerts in seconds 30min = 1800
-tba = 1800
+
+FMT = '%Y-%m-%d %H:%M:%S.%f'
