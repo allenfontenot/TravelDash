@@ -1,2 +1,2 @@
 #!/bin/sh
-touch /home/pi/TimerTest/imhere.txt
+touch /home/pi/TravelDash/imhere.txt
