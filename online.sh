@@ -1,4 +1,4 @@
 #!/bin/sh
-cd /home/pi/TimerTest
+cd /home/pi/TravelDash
 sudo ./initlog.py
-rm /home/pi/TimerTest/imhere.txt
+rm /home/pi/TravelDash/imhere.txt
