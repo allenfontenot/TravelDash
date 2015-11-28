@@ -1,2 +1,2 @@
 cd /home/pi/TravelDash
-sudo ./TravelDash.py
+sudo python TravelDash.py
