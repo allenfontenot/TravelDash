@@ -6,7 +6,7 @@ from pygame.locals import *
 pygame.init()
 
 #################Store Info#################
-NSN = '6631'
+NSN = '9999'
 zone1 = 'Lobby'
 zone2 = 'Stockroom'
 zone3 = 'Drive Thru'
