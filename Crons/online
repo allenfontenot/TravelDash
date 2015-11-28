@@ -1,2 +1,2 @@
 
-0 4 * * * pi /home/pi/TimerTest/online.sh
+0 4 * * * pi /home/pi/TravelDash/online.sh
