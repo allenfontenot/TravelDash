@@ -1,2 +1,2 @@
 
-@reboot pi /home/pi/TimerTest/dashonrestart.sh
+@reboot pi /home/pi/TravelDash/dashonrestart.sh
