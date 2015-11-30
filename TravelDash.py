@@ -3,7 +3,6 @@
 import pygame
 import pygame.gfxdraw
 import RPi.GPIO as GPIO
-import logging
 from background import *
 from interrupts import *
 from datetime import datetime

@@ -15,6 +15,9 @@ pygame.display.toggle_fullscreen()
 background = pygame.Surface(lcd.get_size())
 background = background.convert()
 
+#initialized variables to not send emails too often
+tm = tm2 =  0; lm = lm2 =  0;
+
 def drawitall():
     os.putenv('SDL_FBDEV', '/dev/fb1')
     pygame.init()
