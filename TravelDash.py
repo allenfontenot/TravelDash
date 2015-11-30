@@ -2,16 +2,10 @@
 
 import pygame
 import pygame.gfxdraw
-import sys
-import threading
-import time
 import RPi.GPIO as GPIO
-import csv
-import datetime
 import logging
 from background import *
 from interrupts import *
-from datetime import timedelta
 from datetime import datetime
 from pygame.locals import *
 from sendmail import *
