@@ -103,4 +103,5 @@ thenMinutes = [0,0,0]
 FMT = '%Y-%m-%d %H:%M:%S.%f'
 
 #initialized variables to not send emails too often
+global tm;global tm2;global lm;global lm2
 tm = tm2 =  0; lm = lm2 =  0;
