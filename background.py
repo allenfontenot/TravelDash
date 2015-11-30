@@ -244,7 +244,7 @@ def avglong(rows,avgpos,longpos):#positions are in complications
 	comptext(longpos,c2t)
 	compnumber(longpos,str(long))
 
- def notify():
+def notify():
     		#level one email goes to store
 	       # if thenMinutes[0] >= mailtime1 or
 		if thenMinutes[1] >= mailtimeLevel1 or thenMinutes[2] >= mailtimeLevel1:
