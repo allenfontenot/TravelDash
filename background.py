@@ -6,6 +6,7 @@ from settings import *
 from interrupts import *
 from datetime import datetime
 from sendmail import *
+import logging
 
 pygame.init()
 lcd = pygame.display.set_mode((1360, 768))
