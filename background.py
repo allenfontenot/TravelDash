@@ -1,16 +1,11 @@
 import pygame
 import pygame.gfxdraw
 import os
-import sys
 import time
-import RPi.GPIO as GPIO
-import csv
-import datetime
 from settings import *
 from interrupts import *
-from datetime import timedelta
 from datetime import datetime
-from pygame.locals import *
+from sendmail import *
 
 pygame.init()
 lcd = pygame.display.set_mode((1360, 768))
