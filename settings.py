@@ -101,3 +101,6 @@ nowMinutes = [0,0,0]
 thenMinutes = [0,0,0]
 
 FMT = '%Y-%m-%d %H:%M:%S.%f'
+
+#initialized variables to not send emails too often
+tm = tm2 =  0; lm = lm2 =  0;

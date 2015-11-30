@@ -42,7 +42,7 @@ imyellow = [False,False,False]
 imred = [False,False,False]
 
 #mail timers for not spamming notifications
-tm = tm2 =  0; lm = lm2 =  0;thenRows = 0
+thenRows = 0
 logcount = 0
 logcount2 = 0
 while True:
