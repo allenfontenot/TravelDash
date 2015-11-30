@@ -18,9 +18,9 @@ zone6 = ''
 #time to change circle colors
 yellowLimit = 60
 redLimit = 120
-#time to wait after colors change to send notification
-mailwait1 = 75
-mailwait2 = 120
+#time to wait to send notification
+mailtimeLevel1 = 135
+mailtimeLevel2 = 240
 #minimum time between email alerts in seconds 30min = 1800
 tba = 1800
 

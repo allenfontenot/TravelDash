@@ -22,7 +22,7 @@ def sendmail(z1time, z2time, z3time,store,level):
 		l1m = [line.strip() for line in f]
 
 	with open('emaillevel2.txt', 'r') as f:
-                l2m = [line.strip() for line in f]
+    	            l2m = [line.strip() for line in f]
 
 	with open('emaillevel3.txt', 'r') as f:
                 l3m = [line.strip() for line in f]
@@ -36,12 +36,12 @@ def sendmail(z1time, z2time, z3time,store,level):
 			toaddr = elem
 			server.sendmail(fromaddr, toaddr, msg)		
 	elif level == 2:
-		for elem in l1m:
+		for elem in l2m:
                         toaddr = elem
                         server.sendmail(fromaddr, toaddr, msg)
 
 	elif level == 3:
-		for elem in l1m:
+		for elem in l3m:
                         toaddr = elem
                         server.sendmail(fromaddr, toaddr, msg)
 	elif level == 5:
