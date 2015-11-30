@@ -247,7 +247,7 @@ def avglong(rows,avgpos,longpos):#positions are in complications
 def notify():
     tm = tm2 = 0
 #level one email goes to store
-    if thenMinutes[0] >= mailtime1 or thenMinutes[1] >= mailtimeLevel1 or thenMinutes[2] >= mailtimeLevel1:
+    if thenMinutes[0] >= mailtimeLevel1 or thenMinutes[1] >= mailtimeLevel1 or thenMinutes[2] >= mailtimeLevel1:
         lvl = 1
         tm = time.time()  #this mail is now
         tslm = tm - lm    #time since last mail = this mail - last mail
