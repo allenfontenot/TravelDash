@@ -2,7 +2,6 @@
 
 import pygame
 import pygame.gfxdraw
-import os
 import sys
 import threading
 import time
@@ -29,9 +28,9 @@ GPIO.setup(14, GPIO.IN,pull_up_down=GPIO.PUD_UP); GPIO.setup(15, GPIO.IN,pull_up
 GPIO.add_event_detect( 2, GPIO.FALLING, callback=interrupt1, bouncetime=300)
 GPIO.add_event_detect( 3, GPIO.FALLING, callback=interrupt2, bouncetime=300)
 GPIO.add_event_detect( 4, GPIO.FALLING, callback=interrupt3, bouncetime=300)
-#GPIO.add_event_detect(14, GPIO.FALLING, callback=interrupt4, bouncetime=300)
+GPIO.add_event_detect(14, GPIO.FALLING, callback=interrupt4, bouncetime=300)
 GPIO.add_event_detect(15, GPIO.FALLING, callback=interrupt5, bouncetime=300)
-#GPIO.add_event_detect(18, GPIO.FALLING, callback=interrupt6, bouncetime=300)
+GPIO.add_event_detect(18, GPIO.FALLING, callback=interrupt6, bouncetime=300)
 
 logging.basicConfig(filename = 'debug.log', level=logging.DEBUG)
 
