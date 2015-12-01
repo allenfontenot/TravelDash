@@ -14,21 +14,21 @@ def interrupt1(channel):
         outputFile = open('travellog.csv', 'a')
         time1 = datetime.now()
         outputWriter = csv.writer(outputFile)
-        outputWriter.writerow([time1, zone4, NSN])
+        outputWriter.writerow([time1, zone1, NSN])
         outputFile.close()
 def interrupt2(channel):
         print"falling edge 3"
         outputFile = open('travellog.csv', 'a')
         time2 = datetime.now()
         outputWriter = csv.writer(outputFile)
-        outputWriter.writerow([time2, zone5, NSN])
+        outputWriter.writerow([time2, zone2, NSN])
         outputFile.close()
 def interrupt3(channel):
         print"falling edge 4"
         outputFile = open('travellog.csv', 'a')
         time3 = datetime.now()
         outputWriter = csv.writer(outputFile)
-        outputWriter.writerow([time3, zone6, NSN])
+        outputWriter.writerow([time3, zone3, NSN])
         outputFile.close()
 def interrupt4(channel):
         print"falling edge 14"
