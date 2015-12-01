@@ -8,48 +8,49 @@ from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 
-emailfrom = "sender@example.com"
-emailto = "destination@example.com"
-fileToSend = "hi.csv"
-username = "user"
-password = "password"
+def mailattachment(to,subject,file):
+    emailfrom = "travelpathnotcomplete@gmail.com"
+    emailto = to
+    fileToSend = file
+    username = "travelpathnotcomplete@gmail.com"
+    password = "gehrig10"
 
-msg = MIMEMultipart()
-msg["From"] = emailfrom
-msg["To"] = emailto
-msg["Subject"] = "help I cannot send an attachment to save my life"
-msg.preamble = "help I cannot send an attachment to save my life"
+    msg = MIMEMultipart()
+    msg["From"] = emailfrom
+    msg["To"] = emailto
+    msg["Subject"] = subject
+    msg.preamble = subject
 
-ctype, encoding = mimetypes.guess_type(fileToSend)
-if ctype is None or encoding is not None:
-    ctype = "application/octet-stream"
+    ctype, encoding = mimetypes.guess_type(fileToSend)
+    if ctype is None or encoding is not None:
+        ctype = "application/octet-stream"
 
-maintype, subtype = ctype.split("/", 1)
+    maintype, subtype = ctype.split("/", 1)
 
-if maintype == "text":
-    fp = open(fileToSend)
-    # Note: we should handle calculating the charset
-    attachment = MIMEText(fp.read(), _subtype=subtype)
-    fp.close()
-elif maintype == "image":
-    fp = open(fileToSend, "rb")
-    attachment = MIMEImage(fp.read(), _subtype=subtype)
-    fp.close()
-elif maintype == "audio":
-    fp = open(fileToSend, "rb")
-    attachment = MIMEAudio(fp.read(), _subtype=subtype)
-    fp.close()
-else:
-    fp = open(fileToSend, "rb")
-    attachment = MIMEBase(maintype, subtype)
-    attachment.set_payload(fp.read())
-    fp.close()
-    encoders.encode_base64(attachment)
-attachment.add_header("Content-Disposition", "attachment", filename=fileToSend)
-msg.attach(attachment)
+    if maintype == "text":
+        fp = open(fileToSend)
+        # Note: we should handle calculating the charset
+        attachment = MIMEText(fp.read(), _subtype=subtype)
+        fp.close()
+    elif maintype == "image":
+        fp = open(fileToSend, "rb")
+        attachment = MIMEImage(fp.read(), _subtype=subtype)
+        fp.close()
+    elif maintype == "audio":
+        fp = open(fileToSend, "rb")
+        attachment = MIMEAudio(fp.read(), _subtype=subtype)
+        fp.close()
+    else:
+        fp = open(fileToSend, "rb")
+        attachment = MIMEBase(maintype, subtype)
+        attachment.set_payload(fp.read())
+        fp.close()
+        encoders.encode_base64(attachment)
+    attachment.add_header("Content-Disposition", "attachment", filename=fileToSend)
+    msg.attach(attachment)
 
-server = smtplib.SMTP("smtp.gmail.com:587")
-server.starttls()
-server.login(username,password)
-server.sendmail(emailfrom, emailto, msg.as_string())
-server.quit()
+    server = smtplib.SMTP("smtp.gmail.com:587")
+    server.starttls()
+    server.login(username,password)
+    server.sendmail(emailfrom, emailto, msg.as_string())
+    server.quit()
