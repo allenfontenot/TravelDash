@@ -178,9 +178,9 @@ while True:
                 tm2 = time.time()  #this mail is now
                 tslm2 = tm2 - lm2    #time since last mail = this mail - last mail
                 if tslm2 > tba:#time between alerts in seconds 30min = 1800
-                    sendmail(thenMinutes[0], thenMinutes[1], thenMinutes[2],NSN,lvl)
-                    print "level 2 email sent at " +  str(datetime.now())
-                    logging.debug(str(datetime.now()) +  " level 2 email sent")
-                    lm2 = tm2
+                    	sendmail(thenMinutes[0], thenMinutes[1], thenMinutes[2],NSN,lvl)
+                    	print "level 2 email sent at " +  str(datetime.now())
+                    	logging.debug(str(datetime.now()) +  " level 2 email sent")
+                    	lm2 = tm2
 	logcount2 = 0
 	closed = os.path.exists('imhere.txt')
