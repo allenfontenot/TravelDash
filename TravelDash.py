@@ -163,7 +163,7 @@ while True:
 					pygame.display.flip()
 			k += 1
 		#notify(lm)
-		if thenMinutes[0] >= mailtimeLevel1 or thenMinutes[1] >= mailtimeLevel1 or thenMinutes[2] >= mailtimeLevel1:
+        if thenMinutes[0] >= mailtimeLevel1 or thenMinutes[1] >= mailtimeLevel1 or thenMinutes[2] >= mailtimeLevel1:
         		lvl = 1
         		tm = time.time()  #this mail is now
         		tslm = tm - lm    #time since last mail = this mail - last mail
@@ -173,8 +173,8 @@ while True:
             			logging.debug(str(datetime.now()) + " level 1 email sent")
             			lm = tm
 #level two email
-	    if thenMinutes[0] >= mailtimeLevel2 or thenMinutes[1] >= mailtimeLevel2 or thenMinutes[2] >= mailtimeLevel2:
-                lvl = 2
+		if thenMinutes[0] >= mailtimeLevel2 or thenMinutes[1] >= mailtimeLevel2 or thenMinutes[2] >= mailtimeLevel2:
+				lvl = 2
                 tm2 = time.time()  #this mail is now
                 tslm2 = tm2 - lm2    #time since last mail = this mail - last mail
                 if tslm2 > tba:#time between alerts in seconds 30min = 1800
