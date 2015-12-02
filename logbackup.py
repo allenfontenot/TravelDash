@@ -16,3 +16,5 @@ newFilePath = '/home/pi/TravelDash/logs/'+newFileName
 os.rename('/home/pi/TravelDash/travellog.csv',newFilePath)
 
 shutil.copyfile('/home/pi/TravelDash/travellog.old','/home/pi/TravelDash/travellog.csv')
+
+subprocess.call('/home/pi/Dropbox-Uploader/dropbox_uploader.sh','upload /home/pi/TravelDash/logs/*.csv /logs/')
