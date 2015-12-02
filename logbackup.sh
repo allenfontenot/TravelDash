@@ -2,9 +2,9 @@
 
 cd /home/pi/TravelDash
 
-touch /home/pi/TravelDash/debug.log
-
 sudo python logbackup.py
+
+sudo touch debug.log
 
 sudo ./dropbox_uploader.sh -s -f .duconfig upload /home/pi/TravelDash/TPDlogs/*.csv /TPDlogs-gehrig/
 
