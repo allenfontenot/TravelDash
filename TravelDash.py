@@ -182,5 +182,5 @@ while True:
                 	    	print "level 2 email sent at " +  str(datetime.now())
                 	    	logging.debug(str(datetime.now()) +  " level 2 email sent")
                     		lm2 = tm2
-	logcount2 = 0
-	closed = os.path.exists('imhere.txt')
+		logcount2 = 0
+		closed = os.path.exists('imhere.txt')
