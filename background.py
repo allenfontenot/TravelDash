@@ -242,25 +242,3 @@ def avglong(rows,avgpos,longpos):#positions are in complications
 	complication(longpos)
 	comptext(longpos,c2t)
 	compnumber(longpos,str(long))
-
-#def notify():
-#level one email goes to store
-#    if thenMinutes[0] >= mailtimeLevel1 or thenMinutes[1] >= mailtimeLevel1 or thenMinutes[2] >= mailtimeLevel1:
-#        lvl = 1
-#        tm = time.time()  #this mail is now
-#        tslm = tm - lm    #time since last mail = this mail - last mail
-#        if tslm > tba:#time between alerts in seconds 30min = 1800
-#            sendmail(thenMinutes[0], thenMinutes[1], thenMinutes[2],NSN,lvl)
-#            print "level 1 email sent at " + str(datetime.now())
-#            logging.debug(str(datetime.now()) + " level 1 email sent")
-#            lm = tm
-#level two email
-#	    if thenMinutes[0] >= mailtimeLevel2 or thenMinutes[1] >= mailtimeLevel2 or thenMinutes[2] >= mailtimeLevel2:
-#                lvl = 2
-#                tm2 = time.time()  #this mail is now
-#               tslm2 = tm2 - lm2    #time since last mail = this mail - last mail
-#               if tslm2 > tba:#time between alerts in seconds 30min = 1800
-#                    sendmail(thenMinutes[0], thenMinutes[1], thenMinutes[2],NSN,lvl)
-#                    print "level 2 email sent at " +  str(datetime.now())
-#                   logging.debug(str(datetime.now()) +  " level 2 email sent")
-#                   lm2 = tm2
