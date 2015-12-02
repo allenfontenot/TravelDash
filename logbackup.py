@@ -2,8 +2,6 @@ import os
 import shutil
 from settings import NSN
 import datetime
-import subprocess
-
 
 date = datetime.date.today()#get day month year
 
@@ -17,5 +15,3 @@ newFilePath = '/home/pi/TravelDash/logs/'+newFileName
 os.rename('/home/pi/TravelDash/travellog.csv',newFilePath)
 
 shutil.copyfile('/home/pi/TravelDash/travellog.old','/home/pi/TravelDash/travellog.csv')
-
-subprocess.call(["/home/pi/Dropbox-Uploader/dropbox_uploader.sh", "upload " + newFilePath + " /logs/",path])
