@@ -1,2 +1,2 @@
 
-0 22 * * * pi /home/pi/TravelDash/offline.sh
+0 23 * * * pi /home/pi/TravelDash/offline.sh
