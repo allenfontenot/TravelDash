@@ -1,2 +1,2 @@
 #!/bin/sh
-touch /home/pi/TravelDash/imhere.txt
+sudo touch /home/pi/TravelDash/imhere.txt
