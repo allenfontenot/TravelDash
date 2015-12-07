@@ -79,15 +79,15 @@ while True:
 	timeComp()
 	if logcount == 0:
 		logging.debug(str(datetime.datetime.now()) + " online")
-				sendmail("online",0,0,NSN,5)
+		sendmail("online",0,0,NSN,5)
 		logcount = 1
 	#EXIT#
-			for event in pygame.event.get():
-					if event.type == pygame.QUIT:
-							pygame.quit()
-							sys.exit()
-					elif event.type == KEYDOWN:
-							sys.exit()
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			pygame.quit()
+			sys.exit()
+		elif event.type == KEYDOWN:
+			sys.exit()
 
 	t=time.ctime(path.getmtime("travellog.csv"))
 	td = datetime.datetime.now() - datetime.datetime.fromtimestamp(path.getmtime("travellog.csv"))
