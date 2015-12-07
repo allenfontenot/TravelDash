@@ -120,9 +120,12 @@ while True:
         q = datetime.datetime.strptime(lastTime[i],FMT) #time of last travel
         r = currentTime - q
         e = int(r.total_seconds() / 60)
-        color = green if e < yellowLimit else color = yellow if redLimit > e >= yellowLimit else color = red
+        if e < yellowLimit:
+            color = green
+        else:
+            color = yellow if redLimit > e >= yellowLimit else color = red
         circles(i, color);  footers(i); number(i, e)
-        lcd.blit(background, (0,0))
+        lcd.blit(background, (0, 0))
         pygame.display.flip()
         logcount2 = 0
 
