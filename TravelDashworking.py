@@ -48,7 +48,7 @@ logcount = 0
 logcount2 = 0
 while True:
 	tnow = datetime.datetime.now().time()
-	offlinetime = datetime.time(10,0,0,0)
+	offlinetime = datetime.time(22,0,0,0)
 	onlinetime = datetime.time(4,0,0,0)
 	#put time on comnplication 3
 	timeComp()		
