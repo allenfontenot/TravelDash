@@ -56,9 +56,9 @@ while True:
     offlinetime = datetime.time(22, 0, 0, 0)
     onlinetime = datetime.time(4, 0, 0, 0)
     # put time on comnplication 3
-    timeComp()
+    timecomp()
     while tnow > offlinetime or tnow < onlinetime:  # checks for offline from file inserted through cron
-        timeComp()
+        timecomp()
         if logcount2 == 0:
             logging.debug(str(datetime.datetime.now()) + " offline")
             sendmail("offline", 0, 0, NSN, 5)
@@ -81,7 +81,7 @@ while True:
         logcount = 0  # so that online loggin and email only sent if offline first
     # closed = os.path.exists('imhere.txt')
     #########not offline
-    timeComp()
+    timecomp()
     if logcount == 0:
         logging.debug(str(datetime.datetime.now()) + " online")
         sendmail("online", 0, 0, NSN, 5)
@@ -176,6 +176,7 @@ while True:
                 print "level 1 email sent at " + str(datetime.datetime.now())
                 logging.debug(str(datetime.datetime.now()) + " level 1 email sent")
                 lm = tm
+                Violation(datetime.datetime.now(), 'zone', lvl)
             # level two email
         if thenMinutes[0] >= mailtimeLevel2 or thenMinutes[1] >= mailtimeLevel2 or thenMinutes[2] >= mailtimeLevel2:
             lvl = 2
@@ -186,5 +187,6 @@ while True:
                 print "level 2 email sent at " + str(datetime.datetime.now())
                 logging.debug(str(datetime.datetime.now()) + " level 2 email sent")
                 lm2 = tm2
+                Violation(datetime.datetime.now(), 'zone', lvl)
     logcount2 = 0
     closed = os.path.exists('imhere.txt')

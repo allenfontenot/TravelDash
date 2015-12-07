@@ -15,8 +15,10 @@ pygame.display.toggle_fullscreen()
 background = pygame.Surface(lcd.get_size())
 background = background.convert()
 
-#initialized variables to not send emails too often
-tm = tm2 =  0; lm = lm2 =  0;
+# initialized variables to not send emails too often
+tm = tm2 = 0;
+lm = lm2 = 0;
+
 
 def drawitall():
     os.putenv('SDL_FBDEV', '/dev/fb1')
@@ -57,29 +59,30 @@ def apron():
 
 def circles(pos, color):
     if pos == 1:
-	pygame.gfxdraw.aacircle(background, z1x, z1y, ocr+1, bcolor)
-        pygame.gfxdraw.filled_circle(background, z1x, z1y, ocr+1, bcolor)
+        pygame.gfxdraw.aacircle(background, z1x, z1y, ocr + 1, bcolor)
+        pygame.gfxdraw.filled_circle(background, z1x, z1y, ocr + 1, bcolor)
         pygame.gfxdraw.aacircle(background, z1x, z1y, ocr, color)
         pygame.gfxdraw.filled_circle(background, z1x, z1y, ocr, color)
         pygame.gfxdraw.aacircle(background, z1x, z1y, icr, ccolor)
         pygame.gfxdraw.filled_circle(background, z1x, z1y, icr, ccolor)
     elif pos == 2:
-	pygame.gfxdraw.aacircle(background, z2x, z2y, ocr+1, bcolor)
-        pygame.gfxdraw.filled_circle(background, z2x, z2y, ocr+1, bcolor)
+        pygame.gfxdraw.aacircle(background, z2x, z2y, ocr + 1, bcolor)
+        pygame.gfxdraw.filled_circle(background, z2x, z2y, ocr + 1, bcolor)
         pygame.gfxdraw.aacircle(background, z2x, z2y, ocr, color)
         pygame.gfxdraw.filled_circle(background, z2x, z2y, ocr, color)
         pygame.gfxdraw.aacircle(background, z2x, z2y, icr, ccolor)
         pygame.gfxdraw.filled_circle(background, z2x, z2y, icr, ccolor)
     elif pos == 3:
-	pygame.gfxdraw.aacircle(background, z3x, z3y, ocr+1, bcolor)
-        pygame.gfxdraw.filled_circle(background, z3x, z3y, ocr+1, bcolor)
+        pygame.gfxdraw.aacircle(background, z3x, z3y, ocr + 1, bcolor)
+        pygame.gfxdraw.filled_circle(background, z3x, z3y, ocr + 1, bcolor)
         pygame.gfxdraw.aacircle(background, z3x, z3y, ocr, color)
         pygame.gfxdraw.filled_circle(background, z3x, z3y, ocr, color)
         pygame.gfxdraw.aacircle(background, z3x, z3y, icr, ccolor)
         pygame.gfxdraw.filled_circle(background, z3x, z3y, icr, ccolor)
 
+
 def innercircle(pos):
-	#this updates the number and inner circle without changing color
+    # this updates the number and inner circle without changing color
     if pos == 1:
         pygame.gfxdraw.aacircle(background, z1x, z1y, icr, ccolor)
         pygame.gfxdraw.filled_circle(background, z1x, z1y, icr, ccolor)
@@ -89,6 +92,7 @@ def innercircle(pos):
     elif pos == 3:
         pygame.gfxdraw.aacircle(background, z3x, z3y, icr, ccolor)
         pygame.gfxdraw.filled_circle(background, z3x, z3y, icr, ccolor)
+
 
 def headers(zone, pos):
     h = hf.render(zone, 1, fcolor)
@@ -129,17 +133,17 @@ def title():
 
 def complications(pos):
     if pos == 1:
-	pygame.gfxdraw.filled_circle(background, comp1x, compy, compr, acolor)
+        pygame.gfxdraw.filled_circle(background, comp1x, compy, compr, acolor)
         pygame.gfxdraw.aacircle(background, comp1x, compy, compr, acolor)
         pygame.gfxdraw.filled_circle(background, comp1x, compy, compr, green)
         pygame.gfxdraw.aacircle(background, comp1x, compy, compr, green)
     elif pos == 2:
         pygame.gfxdraw.filled_circle(background, comp2x, compy, compr, acolor)
         pygame.gfxdraw.aacircle(background, comp2x, compy, compr, acolor)
-	pygame.gfxdraw.filled_circle(background, comp2x, compy, compr, yellow)
+        pygame.gfxdraw.filled_circle(background, comp2x, compy, compr, yellow)
         pygame.gfxdraw.aacircle(background, comp2x, compy, compr, yellow)
     elif pos == 3:
-	pygame.gfxdraw.filled_circle(background, comp3x, compy, compr, acolor)
+        pygame.gfxdraw.filled_circle(background, comp3x, compy, compr, acolor)
         pygame.gfxdraw.aacircle(background, comp3x, compy, compr, acolor)
         pygame.gfxdraw.filled_circle(background, comp3x, compy, compr, red)
         pygame.gfxdraw.aacircle(background, comp3x, compy, compr, red)
@@ -199,46 +203,68 @@ def findLastTime(zone):
         elif zone == 3:
             return max(time3)
 
-def timeComp():
-	tt = datetime.now()
-        th = str(tt.hour)
-        tm = str(tt.minute).zfill(2)
-        complications(3)
-        compnumber(3,th+':'+tm)
-	comptext(3,c3t)	
-        pygame.display.flip()
 
-#functin to store PID which is used to kill the task at night
+def timecomp():
+    tt = datetime.now()
+    th = str(tt.hour)
+    tm = str(tt.minute).zfill(2)
+    complications(3)
+    compnumber(3, th + ':' + tm)
+    comptext(3, c3t)
+    pygame.display.flip()
+
+
+# function to store PID which is used to kill the task at night
 def writePidFile():
-       pid = str(os.getpid())
-       f = open('pid.txt', 'w')
-       f.write(pid)
-       f.close()
+    pid = str(os.getpid())
+    f = open('pid.txt', 'w')
+    f.write(pid)
+    f.close()
 
-def avglong(rows,avgpos,longpos):#positions are in complications
-	x = []; y = []
-	with open('travellog.csv') as f:
-		reader = csv.reader(f, delimiter = ',', quotechar = '|')
-		for row in reader:
-			x.append(row[0])
-	i=0
-	while i < rows-1:
-		
-		xa = datetime.strptime(x[i+1],FMT)
-		xb = datetime.strptime(x[i],FMT)
 
-		y.append(xa - xb)
-		
-	avg = sum(y)/len(y)
-	long = max(y)
+#def avglong(rows, avgpos, longpos):  # positions are in complications
+#    x = [];
+#    y = []
+#    with open('travellog.csv') as f:
+#        reader = csv.reader(f, delimiter=',', quotechar='|')
+#        for row in reader:
+#            x.append(row[0])
+#    i = 0
+#    while i < rows - 1:
+#        xa = datetime.strptime(x[i + 1], FMT)
+#        xb = datetime.strptime(x[i], FMT)
+#
+#        y.append(xa - xb)
+#
+#    avg = sum(y) / len(y)
+#    long = max(y)
+#
+#    avg = int(avg.total_seconds() / 60)
+#    long = int(long.total_seconds() / 60)
+#
+#    complication(avgpos)
+#    comptext(avgpos, c1t)
+#    compnumber(avgpos, str(avg))
+#
+#    complication(longpos)
+#    comptext(longpos, c2t)
+#    compnumber(longpos, str(long))
 
-	avg = int(avg.total_seconds() / 60)
-	long = int(long.total_seconds() / 60)
 
-	complication(avgpos)
-	comptext(avgpos,c1t)
-	compnumber(avgpos,str(avg))
-	
-	complication(longpos)
-	comptext(longpos,c2t)
-	compnumber(longpos,str(long))
+class Violation:
+    f = open('violations.txt', "r+")
+    vcount = sum(1 for row in f)  # store number of rows in nowRows
+
+    def __init__(self, time, zone, level):
+        self.time = time
+        self.zone = zone
+        self.level = level
+        f = open('violations.txt', "a+")
+        f.write(str(self.time) + ',' + str(self.zone) + ',' + str(self.level) + '\n')
+
+    def count(self):
+        return Violation.vcount
+
+    def time(self):
+        return 0
+        #time of last violation
