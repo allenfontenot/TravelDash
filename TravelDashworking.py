@@ -77,111 +77,111 @@ while True:
 		#closed = os.path.exists('imhere.txt')
 	#########not offline
 	timeComp()
-		if logcount == 0:
-			logging.debug(str(datetime.datetime.now()) + " online")
-                	sendmail("online",0,0,NSN,5)
-			logcount = 1
-		#EXIT#
-                for event in pygame.event.get():
-                        if event.type == pygame.QUIT:
-                                pygame.quit()
-                                sys.exit()
-                        elif event.type == KEYDOWN:
-                                sys.exit()
+	if logcount == 0:
+		logging.debug(str(datetime.datetime.now()) + " online")
+				sendmail("online",0,0,NSN,5)
+		logcount = 1
+	#EXIT#
+			for event in pygame.event.get():
+					if event.type == pygame.QUIT:
+							pygame.quit()
+							sys.exit()
+					elif event.type == KEYDOWN:
+							sys.exit()
 
-		t=time.ctime(path.getmtime("travellog.csv"))
-		td = datetime.datetime.now() - datetime.datetime.fromtimestamp(path.getmtime("travellog.csv"))
-
-
+	t=time.ctime(path.getmtime("travellog.csv"))
+	td = datetime.datetime.now() - datetime.datetime.fromtimestamp(path.getmtime("travellog.csv"))
 
 
-		f = open('travellog.csv')#openfile
-		nowRows = sum(1 for row in f)#store number of rows in nowRows
-		diffRows = nowRows - thenRows #check for added rows
 
-		if diffRows == 0:
-			f.close()
+
+	f = open('travellog.csv')#openfile
+	nowRows = sum(1 for row in f)#store number of rows in nowRows
+	diffRows = nowRows - thenRows #check for added rows
+
+	if diffRows == 0:
+		f.close()
+	else:
+		#avglong(nowRows,1,2) #puts average in complication 1 and long in comp2
+		#pygame.display.flip()
+
+		if diffRows < 0:
+			thenRows = nowRows
+			importFile.close()
+		#finds the last entry for each zone
 		else:
-			#avglong(nowRows,1,2) #puts average in complication 1 and long in comp2
-			#pygame.display.flip()
+			lastTime[0] = findLastTime(1)
+			lastTime[1] = findLastTime(2)
+			lastTime[2] = findLastTime(3)
 
-			if diffRows < 0:
-				thenRows = nowRows
-				importFile.close()
-			#finds the last entry for each zone
+		currentTime = datetime.datetime.now()
+	#subtract stored time from current
+	k = 0
+	while k < 3:
+		q = datetime.datetime.strptime(lastTime[k],FMT)
+		r = currentTime - q
+		timeDiff[k] = r
+		#extract whole elapsed time minutes
+
+		nowMinutes[k] = int(timeDiff[k].total_seconds() / 60)
+
+		if nowMinutes[k] != thenMinutes[k]:
+			thenMinutes[k] = nowMinutes[k]
+			if   thenMinutes[k] >= 0 and thenMinutes[k] < yellowLimit and imgreen[k] == False:
+				print "changing zone " + str(k+1) + " to " + str(thenMinutes[k])
+				logging.debug(str(datetime.datetime.now()) + " changing zone " + str(k+1) + " to " + str(thenMinutes[k]))
+				circles(k+1,green)
+				footers(k+1)
+				number(k+1,thenMinutes[k])
+				imgreen[k] != imgreen[k]
+				lcd.blit(background, (0,0))
+				pygame.display.flip()
+				elif thenMinutes[k] >= yellowLimit and thenMinutes[k] < redLimit and imyellow[k] == False:
+				print "changing zone " + str(k+1) + " to " + str(thenMinutes[k])
+				logging.debug(str(datetime.datetime.now()) + " changing zone " + str(k+1) + " to " + str(thenMinutes[k]))
+				circles(k+1,yellow)
+				footers(k+1)
+									number(k+1,thenMinutes[k])
+				imyellow[k] != imyellow[k]
+				lcd.blit(background, (0,0))
+									pygame.display.flip()
+				elif thenMinutes[k] >= redLimit and imred[k] == False:
+				print "changing zone " + str(k+1) + " to " + str(thenMinutes[k])
+				logging.debug(str(datetime.datetime.now()) + " changing zone " + str(k+1) + " to " + str(thenMinutes[k]))
+				circles(k+1,red)
+				footers(k+1)
+									number(k+1,thenMinutes[k])
+				imred[k] != imred[k]
+				lcd.blit(background, (0,0))
+									pygame.display.flip()
 			else:
-				lastTime[0] = findLastTime(1)
-				lastTime[1] = findLastTime(2)
-				lastTime[2] = findLastTime(3)
-
-			currentTime = datetime.datetime.now()
-		#subtract stored time from current
-		k = 0
-		while k < 3:
-			q = datetime.datetime.strptime(lastTime[k],FMT)
-			r = currentTime - q
-			timeDiff[k] = r
-			#extract whole elapsed time minutes
-
-			nowMinutes[k] = int(timeDiff[k].total_seconds() / 60)
-
-			if nowMinutes[k] != thenMinutes[k]:
-				thenMinutes[k] = nowMinutes[k]
-				if   thenMinutes[k] >= 0 and thenMinutes[k] < yellowLimit and imgreen[k] == False:
-					print "changing zone " + str(k+1) + " to " + str(thenMinutes[k])
-					logging.debug(str(datetime.datetime.now()) + " changing zone " + str(k+1) + " to " + str(thenMinutes[k]))
-					circles(k+1,green)
-					footers(k+1)
-					number(k+1,thenMinutes[k])
-					imgreen[k] != imgreen[k]
-					lcd.blit(background, (0,0))
-					pygame.display.flip()
-			        elif thenMinutes[k] >= yellowLimit and thenMinutes[k] < redLimit and imyellow[k] == False:
-					print "changing zone " + str(k+1) + " to " + str(thenMinutes[k])
-					logging.debug(str(datetime.datetime.now()) + " changing zone " + str(k+1) + " to " + str(thenMinutes[k]))
-					circles(k+1,yellow)
-					footers(k+1)
-                                        number(k+1,thenMinutes[k])
-					imyellow[k] != imyellow[k]
-					lcd.blit(background, (0,0))
-                                        pygame.display.flip()
-			        elif thenMinutes[k] >= redLimit and imred[k] == False:
-					print "changing zone " + str(k+1) + " to " + str(thenMinutes[k])
-					logging.debug(str(datetime.datetime.now()) + " changing zone " + str(k+1) + " to " + str(thenMinutes[k]))
-					circles(k+1,red)
-					footers(k+1)
-                                        number(k+1,thenMinutes[k])
-					imred[k] != imred[k]
-					lcd.blit(background, (0,0))
-                                        pygame.display.flip()
-				else:
-					print "changing zone " + str(k+1) + " to"  + str(thenMinutes[k])
-					logging.debug(str(datetime.datetime.now()) + " changing zone " + str(k+1) + " to"  + str(thenMinutes[k]))
-					innercircle(k+1)
-					footers(k+1)
-					number(k+1,thenMinutes[k])
-					lcd.blit(background, (0,0))
-					pygame.display.flip()
-			k += 1
-		#notify(lm)
-        	if thenMinutes[0] >= mailtimeLevel1 or thenMinutes[1] >= mailtimeLevel1 or thenMinutes[2] >= mailtimeLevel1:
-        		lvl = 1
-        		tm = time.time()  #this mail is now
-        		tslm = tm - lm    #time since last mail = this mail - last mail
-        		if tslm > tba:#time between alerts in seconds 30min = 1800
-            			sendmail(thenMinutes[0], thenMinutes[1], thenMinutes[2],NSN,lvl)
-            			print "level 1 email sent at " + str(datetime.datetime.now())
-            			logging.debug(str(datetime.datetime.now()) + " level 1 email sent")
-            			lm = tm
-		#level two email
-        	if thenMinutes[0] >= mailtimeLevel2 or thenMinutes[1] >= mailtimeLevel2 or thenMinutes[2] >= mailtimeLevel2:
-                	lvl = 2
-                	tm2 = time.time()  #this mail is now
-                	tslm2 = tm2 - lm2    #time since last mail = this mail - last mail
-                	if tslm2 > tba:#time between alerts in seconds 30min = 1800
-                	    	sendmail(thenMinutes[0], thenMinutes[1], thenMinutes[2],NSN,lvl)
-                	    	print "level 2 email sent at " +  str(datetime.datetime.now())
-                	    	logging.debug(str(datetime.datetime.now()) +  " level 2 email sent")
-                    		lm2 = tm2
-		logcount2 = 0
-		closed = os.path.exists('imhere.txt')
+				print "changing zone " + str(k+1) + " to"  + str(thenMinutes[k])
+				logging.debug(str(datetime.datetime.now()) + " changing zone " + str(k+1) + " to"  + str(thenMinutes[k]))
+				innercircle(k+1)
+				footers(k+1)
+				number(k+1,thenMinutes[k])
+				lcd.blit(background, (0,0))
+				pygame.display.flip()
+		k += 1
+	#notify(lm)
+		if thenMinutes[0] >= mailtimeLevel1 or thenMinutes[1] >= mailtimeLevel1 or thenMinutes[2] >= mailtimeLevel1:
+			lvl = 1
+			tm = time.time()  #this mail is now
+			tslm = tm - lm    #time since last mail = this mail - last mail
+			if tslm > tba:#time between alerts in seconds 30min = 1800
+					sendmail(thenMinutes[0], thenMinutes[1], thenMinutes[2],NSN,lvl)
+					print "level 1 email sent at " + str(datetime.datetime.now())
+					logging.debug(str(datetime.datetime.now()) + " level 1 email sent")
+					lm = tm
+	#level two email
+		if thenMinutes[0] >= mailtimeLevel2 or thenMinutes[1] >= mailtimeLevel2 or thenMinutes[2] >= mailtimeLevel2:
+				lvl = 2
+				tm2 = time.time()  #this mail is now
+				tslm2 = tm2 - lm2    #time since last mail = this mail - last mail
+				if tslm2 > tba:#time between alerts in seconds 30min = 1800
+						sendmail(thenMinutes[0], thenMinutes[1], thenMinutes[2],NSN,lvl)
+						print "level 2 email sent at " +  str(datetime.datetime.now())
+						logging.debug(str(datetime.datetime.now()) +  " level 2 email sent")
+						lm2 = tm2
+	logcount2 = 0
+	closed = os.path.exists('imhere.txt')
