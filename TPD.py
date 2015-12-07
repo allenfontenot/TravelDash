@@ -109,9 +109,9 @@ while True:
             importFile.close()
         # finds the last entry for each zone
         else:
-            lastTime[0] = findLastTime(1)
-            lastTime[1] = findLastTime(2)
-            lastTime[2] = findLastTime(3)
+            lastTime[1] = findLastTime(1)
+            lastTime[2] = findLastTime(2)
+            lastTime[3] = findLastTime(3)
 
         currentTime = datetime.datetime.now()
     # subtract stored time from current
