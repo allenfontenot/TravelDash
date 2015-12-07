@@ -262,6 +262,7 @@ class Violation:
     vcount = sum(1 for row in f)  # store number of rows in nowRows
 
     def __init__(self, time, zone, level):
+        global v, v
         self.time = time
         self.zone = zone
         self.level = level
@@ -269,7 +270,6 @@ class Violation:
         f.write(str(self.time) + ',' + str(self.zone) + ',' + str(self.level) + '\n')
         f.close()
         v += v
-
     def count(self):
         return Violation.vcount
 
