@@ -89,11 +89,6 @@ while True:
 		elif event.type == KEYDOWN:
 			sys.exit()
 
-	t=time.ctime(path.getmtime("travellog.csv"))
-	td = datetime.datetime.now() - datetime.datetime.fromtimestamp(path.getmtime("travellog.csv"))
-
-
-
 
 	f = open('travellog.csv')#openfile
 	nowRows = sum(1 for row in f)#store number of rows in nowRows
