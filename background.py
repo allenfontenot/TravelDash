@@ -19,6 +19,8 @@ background = background.convert()
 tm = tm2 = 0;
 lm = lm2 = 0;
 
+global v
+
 
 def drawitall():
     os.putenv('SDL_FBDEV', '/dev/fb1')
@@ -266,6 +268,7 @@ class Violation:
         f = open('violations.txt', 'a+')
         f.write(str(self.time) + ',' + str(self.zone) + ',' + str(self.level) + '\n')
         f.close()
+        v += v
 
     def count(self):
         return Violation.vcount
