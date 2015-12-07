@@ -116,9 +116,9 @@ while True:
         currentTime = datetime.datetime.now()
     # subtract stored time from current
 
-    for i in range(1, 4):
+    for i in range(3):
         j = i + 1
-        q = datetime.datetime.strptime(lastTime[i],FMT) #time of last travel
+        q = datetime.datetime.strptime(lastTime[i], FMT) #time of last travel
         r = currentTime - q
         e = int(r.total_seconds() / 60)
         if e < yellowLimit:
