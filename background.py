@@ -252,15 +252,20 @@ def writePidFile():
 
 
 class Violation:
-    f = open('violations.txt', "r+")
+    if not open('violations.txt', 'r+'):
+        f = open('violations.txt', 'a+')
+    else:
+        f = open('violations.txt', 'r+')
+
     vcount = sum(1 for row in f)  # store number of rows in nowRows
 
     def __init__(self, time, zone, level):
         self.time = time
         self.zone = zone
         self.level = level
-        f = open('violations.txt', "a+")
+        f = open('violations.txt', 'a+')
         f.write(str(self.time) + ',' + str(self.zone) + ',' + str(self.level) + '\n')
+        f.close()
 
     def count(self):
         return Violation.vcount
