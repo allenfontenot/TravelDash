@@ -120,10 +120,10 @@ while True:
         j = i + 1
         q = datetime.datetime.strptime(lastTime[i], FMT) #time of last travel
         r = currentTime - q
-        e = int(r.total_seconds() / 60)
-        if e < yellowLimit:
+        e = int(r.total_seconds)#() / 60)
+        if e < yellowLimit*60:
             color = green
-        elif redLimit > e >= yellowLimit:
+        elif redLimit*60 > e >= yellowLimit*60:
             color = yellow
         else:
             color = red
