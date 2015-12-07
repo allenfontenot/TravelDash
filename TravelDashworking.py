@@ -5,10 +5,10 @@ import pygame.gfxdraw
 import RPi.GPIO as GPIO
 from background import *
 from interrupts import *
-import datetime.datetime
+import datetime
 from pygame.locals import *
 from sendmail import *
-from datetime.datetime import timedelta
+from datetime import timedelta
 
 os.putenv('SDL_FBDEV', '/dev/fb1')
 pygame.init()
