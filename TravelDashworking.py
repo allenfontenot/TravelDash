@@ -137,23 +137,23 @@ while True:
 				lcd.blit(background, (0,0))
 				pygame.display.flip()
 				elif thenMinutes[k] >= yellowLimit and thenMinutes[k] < redLimit and imyellow[k] == False:
-				print "changing zone " + str(k+1) + " to " + str(thenMinutes[k])
-				logging.debug(str(datetime.datetime.now()) + " changing zone " + str(k+1) + " to " + str(thenMinutes[k]))
-				circles(k+1,yellow)
-				footers(k+1)
-									number(k+1,thenMinutes[k])
-				imyellow[k] != imyellow[k]
-				lcd.blit(background, (0,0))
-									pygame.display.flip()
+					print "changing zone " + str(k+1) + " to " + str(thenMinutes[k])
+					logging.debug(str(datetime.datetime.now()) + " changing zone " + str(k+1) + " to " + str(thenMinutes[k]))
+					circles(k+1,yellow)
+					footers(k+1)
+					number(k+1,thenMinutes[k])
+					imyellow[k] != imyellow[k]
+					lcd.blit(background, (0,0))
+					pygame.display.flip()
 				elif thenMinutes[k] >= redLimit and imred[k] == False:
-				print "changing zone " + str(k+1) + " to " + str(thenMinutes[k])
-				logging.debug(str(datetime.datetime.now()) + " changing zone " + str(k+1) + " to " + str(thenMinutes[k]))
-				circles(k+1,red)
-				footers(k+1)
-									number(k+1,thenMinutes[k])
-				imred[k] != imred[k]
-				lcd.blit(background, (0,0))
-									pygame.display.flip()
+					print "changing zone " + str(k+1) + " to " + str(thenMinutes[k])
+					logging.debug(str(datetime.datetime.now()) + " changing zone " + str(k+1) + " to " + str(thenMinutes[k]))
+					circles(k+1,red)
+					footers(k+1)
+					number(k+1,thenMinutes[k])
+					imred[k] != imred[k]
+					lcd.blit(background, (0,0))
+					pygame.display.flip()
 			else:
 				print "changing zone " + str(k+1) + " to"  + str(thenMinutes[k])
 				logging.debug(str(datetime.datetime.now()) + " changing zone " + str(k+1) + " to"  + str(thenMinutes[k]))
