@@ -124,7 +124,7 @@ while True:
         circles(i, color);  footers(i); number(i, e)
         lcd.blit(background, (0,0))
         pygame.display.flip()
-
+        logcount2 = 0
 
 """    k = 0
     while k < 3:
@@ -199,4 +199,3 @@ while True:
                 logging.debug(str(datetime.datetime.now()) + " level 2 email sent")
                 lm2 = tm2
                 Violation(datetime.datetime.now(), 'zone', lvl)"""
-    logcount2 = 0
