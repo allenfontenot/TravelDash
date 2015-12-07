@@ -109,14 +109,15 @@ while True:
             importFile.close()
         # finds the last entry for each zone
         else:
-            lastTime[1] = findLastTime(1)
-            lastTime[2] = findLastTime(2)
-            lastTime[3] = findLastTime(3)
+            lastTime[0] = findLastTime(1)
+            lastTime[1] = findLastTime(2)
+            lastTime[2] = findLastTime(3)
 
         currentTime = datetime.datetime.now()
     # subtract stored time from current
 
     for i in range(1, 4):
+        j = i + 1
         q = datetime.datetime.strptime(lastTime[i],FMT) #time of last travel
         r = currentTime - q
         e = int(r.total_seconds() / 60)
@@ -126,7 +127,7 @@ while True:
             color = yellow
         else:
             color = red
-        circles(i, color);  footers(i); number(i, e)
+        circles(j, color);  footers(j); number(j, e)
         lcd.blit(background, (0, 0))
         pygame.display.flip()
         logcount2 = 0
