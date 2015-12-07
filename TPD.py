@@ -122,8 +122,10 @@ while True:
         e = int(r.total_seconds() / 60)
         if e < yellowLimit:
             color = green
+        elif redLimit > e >= yellowLimit:
+            color = yellow
         else:
-            color = yellow if redLimit > e >= yellowLimit else color = red
+            color = red
         circles(i, color);  footers(i); number(i, e)
         lcd.blit(background, (0, 0))
         pygame.display.flip()
