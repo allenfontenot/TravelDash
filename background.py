@@ -269,6 +269,7 @@ class Violation:
         f = open('violations.txt', 'a+')
         f.write(str(self.time) + ',' + str(self.zone) + ',' + str(self.level) + '\n')
         f.close()
+        assert isinstance(v, object)
         v += v
     def count(self):
         return Violation.vcount
