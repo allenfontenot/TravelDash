@@ -63,21 +63,12 @@ while True:
             logging.debug(str(datetime.datetime.now()) + " offline")
             sendmail("offline", 0, 0, NSN, 5)
             print str(datetime.datetime.now()) + " offline"
-            circles(1, red);
-            circles(2, red);
-            circles(3, red)
-            footers(1);
-            footers(2);
-            footers(3)
-            number(1, "offline");
-            number(2, "offline");
-            number(3, "offline")
-            complications(1);
-            complications(2)
-            comptext(1, c1t);
-            comptext(2, c2t)
-            compnumber(1, "offline");
-            compnumber(2, "offline")
+            circles(1, red); circles(2, red); circles(3, red)
+            footers(1); footers(2); footers(3)
+            number(1, "offline"); number(2, "offline"); number(3, "offline")
+            complications(1); complications(2)
+            comptext(1, c1t); comptext(2, c2t)
+            compnumber(1, "offline"); compnumber(2, "offline")
             logcount2 = 1
 
         # EXIT#
