@@ -15,20 +15,20 @@ pygame.init()
 
 # Initialize GPIO
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(2, GPIO.IN, pull_up_down=GPIO.PUD_UP);
-GPIO.setup(3, GPIO.IN, pull_up_down=GPIO.PUD_UP);
-GPIO.setup(4, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(14, GPIO.IN, pull_up_down=GPIO.PUD_UP);
-GPIO.setup(15, GPIO.IN, pull_up_down=GPIO.PUD_UP);
-GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup( 2, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+GPIO.setup( 3, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+GPIO.setup( 4, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+GPIO.setup(14, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+GPIO.setup(15, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+GPIO.setup(18, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
 # interrupt pin setup
-GPIO.add_event_detect(2, GPIO.FALLING, callback=interrupt1, bouncetime=300)
-GPIO.add_event_detect(3, GPIO.FALLING, callback=interrupt2, bouncetime=300)
-GPIO.add_event_detect(4, GPIO.FALLING, callback=interrupt3, bouncetime=300)
-GPIO.add_event_detect(14, GPIO.FALLING, callback=interrupt4, bouncetime=300)
-GPIO.add_event_detect(15, GPIO.FALLING, callback=interrupt5, bouncetime=300)
-GPIO.add_event_detect(18, GPIO.FALLING, callback=interrupt6, bouncetime=300)
+GPIO.add_event_detect( 2, GPIO.FALLING, callback = interrupt1, bouncetime=300)
+GPIO.add_event_detect( 3, GPIO.FALLING, callback = interrupt2, bouncetime=300)
+GPIO.add_event_detect( 4, GPIO.FALLING, callback = interrupt3, bouncetime=300)
+GPIO.add_event_detect(14, GPIO.FALLING, callback = interrupt4, bouncetime=300)
+GPIO.add_event_detect(15, GPIO.FALLING, callback = interrupt5, bouncetime=300)
+GPIO.add_event_detect(18, GPIO.FALLING, callback = interrupt6, bouncetime=300)
 
 logging.basicConfig(filename='debug.log', level=logging.DEBUG)
 
@@ -41,8 +41,8 @@ closed = os.path.exists('imhere.txt')
 writePidFile()
 
 # mail timers for not spamming notifications
-tm = tm2 = 0;
-lm = lm2 = 0;
+tm = tm2 = 0
+lm = lm2 = 0
 thenRows = 0
 logcount = 0
 logcount2 = 0

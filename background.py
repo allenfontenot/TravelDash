@@ -1,12 +1,10 @@
 import pygame
 import pygame.gfxdraw
 import os
-import time
 from settings import *
 from interrupts import *
 from datetime import datetime
 from sendmail import *
-import logging
 
 pygame.init()
 lcd = pygame.display.set_mode((1360, 768))
@@ -204,6 +202,12 @@ def findLastTime(zone):
             return max(time2)
         elif zone == 3:
             return max(time3)
+        elif zone == 4:
+            return max(time4)
+        elif zone == 5:
+            return max(time5)
+        elif zone == 6:
+            return max(time6)
 
 
 def timecomp():
