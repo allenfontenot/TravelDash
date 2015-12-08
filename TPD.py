@@ -86,7 +86,8 @@ while True:
     #########not offline
     timecomp()
     avgcomp()
-    #violcomp()
+    viocomp()
+    pygame.display.flip()
 
     if logcount == 0: #online notification first time through
         logging.debug(str(datetime.datetime.now()) + " online")
@@ -101,17 +102,21 @@ while True:
         lastTime[i] = findLastTime(j)
         q = datetime.datetime.strptime(lastTime[i], FMT)
         r = currentTime - q
-        e = int(r.total_seconds())#() / 60)
-        if e < yellowLimit*60:
+        e = int(r.total_seconds() / 60)
+        if e < yellowLimit:
             color = green
-        elif redLimit*60 > e >= yellowLimit*60:
+        elif redLimit > e >= yellowLimit:
             color = yellow
         else:
             color = red
+        notify(lastTime[i])
         circles(j, color);  footers(j); number(j, e)
     lcd.blit(background, (0, 0))
     pygame.display.flip()
     logcount2 = 0
+
+
+
 
 """        # notify(lm)
         if thenMinutes[0] >= mailtimeLevel1 or thenMinutes[1] >= mailtimeLevel1 or thenMinutes[2] >= mailtimeLevel1:
