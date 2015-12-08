@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import csv
-from datetime import datetime
+import datetime
 from settings import *
 from background import findLastTime
 
