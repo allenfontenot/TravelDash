@@ -4,6 +4,19 @@ import datetime
 from settings import *
 from background import findLastTime
 
+
+def findLastTime(zone):
+    with open('travellog.csv') as csvfile:
+        reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+        for row in reader:
+            if row[1].strip() == zone1:
+                time1.append(row[0])
+            if row[1].strip() == zone2:
+                time2.append(row[0])
+            if row[1].strip() == zone3:
+                time3.append(row[0])
+
+
 print"simpush"
 outputFile = open('travellog.csv', 'a')
 now = datetime.datetime.now()
