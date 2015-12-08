@@ -1,9 +1,8 @@
 import pygame
 import pygame.gfxdraw
 import os
-import csv
 from settings import *
-from interrupts import *
+#from interrupts import *
 from datetime import datetime
 from sendmail import *
 
