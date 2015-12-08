@@ -126,7 +126,7 @@ while True:
             color = yellow
         else:
             color = red
-    circles(j, color);  footers(j); number(j, e)
+        circles(j, color);  footers(j); number(j, e)
     lcd.blit(background, (0, 0))
     pygame.display.flip()
     logcount2 = 0
