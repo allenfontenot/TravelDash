@@ -2,7 +2,6 @@
 import csv
 import datetime
 from settings import *
-from background import findLastTime
 
 
 def findLastTime(zone):
