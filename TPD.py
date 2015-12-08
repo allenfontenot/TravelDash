@@ -40,23 +40,19 @@ closed = os.path.exists('imhere.txt')
 # store pid to file
 writePidFile()
 
-# circle status
-imgreen = [False, False, False]
-imyellow = [False, False, False]
-imred = [False, False, False]
-
 # mail timers for not spamming notifications
 tm = tm2 = 0;
 lm = lm2 = 0;
 thenRows = 0
 logcount = 0
 logcount2 = 0
+
 while True:
     offlinetime = datetime.time(22, 0, 0, 0)
     onlinetime = datetime.time(4, 0, 0, 0)
-    # put time on comnplication 3
     timecomp()
-    while datetime.datetime.now().time() > offlinetime or datetime.datetime.now().time() < onlinetime:  # checks for offline from file inserted through cron
+
+    while datetime.datetime.now().time() > offlinetime or datetime.datetime.now().time() < onlinetime:
         timecomp()
         if logcount2 == 0:
             logging.debug(str(datetime.datetime.now()) + " offline")
@@ -78,13 +74,7 @@ while True:
         lcd.blit(background, (0, 0))
         pygame.display.flip()
         logcount = 0  # so that online loggin and email only sent if offline first
-    # closed = os.path.exists('imhere.txt')
-    #########not offline
-    timecomp()
-    if logcount == 0:
-        logging.debug(str(datetime.datetime.now()) + " online")
-        sendmail("online", 0, 0, NSN, 5)
-        logcount = 1
+
     # EXIT#
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -93,31 +83,23 @@ while True:
         elif event.type == KEYDOWN:
             sys.exit()
 
-    f = open('travellog.csv')  # openfile
-    nowRows = sum(1 for row in f)  # store number of rows in nowRows
-    diffRows = nowRows - thenRows  # check for added rows
+    #########not offline
+    timecomp()
+    #avgcomp()
+    #violcomp()
 
-    if diffRows == 0:
-        f.close()
-    else:
-        # avglong(nowRows,1,2) #puts average in complication 1 and long in comp2
-        # pygame.display.flip()
+    if logcount == 0: #online notification first time through
+        logging.debug(str(datetime.datetime.now()) + " online")
+        sendmail("online", 0, 0, NSN, 5)
+        logcount = 1
 
-        if diffRows < 0:
-            thenRows = nowRows
-            importFile.close()
-        # finds the last entry for each zone
-        else:
-            lastTime[0] = findLastTime(1)
-            lastTime[1] = findLastTime(2)
-            lastTime[2] = findLastTime(3)
-
-        currentTime = datetime.datetime.now()
+    currentTime = datetime.datetime.now()
     # subtract stored time from current
 
     for i in range(3):
         j = i + 1
-        q = datetime.datetime.strptime(lastTime[i], FMT) #time of last travel
+        lastTime[i] = findLastTime(j)
+        q = datetime.datetime.strptime(lastTime[i], FMT)
         r = currentTime - q
         e = int(r.total_seconds())#() / 60)
         if e < yellowLimit*60:
@@ -131,58 +113,7 @@ while True:
     pygame.display.flip()
     logcount2 = 0
 
-"""    k = 0
-    while k < 3:
-        q = datetime.datetime.strptime(lastTime[k], FMT)
-        r = currentTime - q
-        timeDiff[k] = r
-        # extract whole elapsed time minutes
-
-        nowMinutes[k] = int(timeDiff[k].total_seconds() / 60)
-
-        if nowMinutes[k] != thenMinutes[k]:
-            thenMinutes[k] = nowMinutes[k]
-            if thenMinutes[k] >= 0 and thenMinutes[k] < yellowLimit and imgreen[k] == False:
-                print "changing zone " + str(k + 1) + " to " + str(thenMinutes[k])
-                logging.debug(
-                    str(datetime.datetime.now()) + " changing zone " + str(k + 1) + " to " + str(thenMinutes[k]))
-                circles(k + 1, green)
-                footers(k + 1)
-                number(k + 1, thenMinutes[k])
-                imgreen[k] != imgreen[k]
-                lcd.blit(background, (0, 0))
-                pygame.display.flip()
-            elif thenMinutes[k] >= yellowLimit and thenMinutes[k] < redLimit and imyellow[k] == False:
-                print "changing zone " + str(k + 1) + " to " + str(thenMinutes[k])
-                logging.debug(
-                    str(datetime.datetime.now()) + " changing zone " + str(k + 1) + " to " + str(thenMinutes[k]))
-                circles(k + 1, yellow)
-                footers(k + 1)
-                number(k + 1, thenMinutes[k])
-                imyellow[k] != imyellow[k]
-                lcd.blit(background, (0, 0))
-                pygame.display.flip()
-            elif thenMinutes[k] >= redLimit and imred[k] == False:
-                print "changing zone " + str(k + 1) + " to " + str(thenMinutes[k])
-                logging.debug(
-                    str(datetime.datetime.now()) + " changing zone " + str(k + 1) + " to " + str(thenMinutes[k]))
-                circles(k + 1, red)
-                footers(k + 1)
-                number(k + 1, thenMinutes[k])
-                imred[k] != imred[k]
-                lcd.blit(background, (0, 0))
-                pygame.display.flip()
-            else:
-                print "changing zone " + str(k + 1) + " to" + str(thenMinutes[k])
-                logging.debug(
-                    str(datetime.datetime.now()) + " changing zone " + str(k + 1) + " to" + str(thenMinutes[k]))
-                innercircle(k + 1)
-                footers(k + 1)
-                number(k + 1, thenMinutes[k])
-                lcd.blit(background, (0, 0))
-                pygame.display.flip()
-        k += 1
-        # notify(lm)
+"""        # notify(lm)
         if thenMinutes[0] >= mailtimeLevel1 or thenMinutes[1] >= mailtimeLevel1 or thenMinutes[2] >= mailtimeLevel1:
             lvl = 1
             tm = time.time()  # this mail is now
