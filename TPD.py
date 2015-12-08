@@ -85,7 +85,7 @@ while True:
 
     #########not offline
     timecomp()
-    #avgcomp()
+    avgcomp()
     #violcomp()
 
     if logcount == 0: #online notification first time through

@@ -228,34 +228,17 @@ def writePidFile():
     f.close()
 
 
-#def avglong(rows, avgpos, longpos):  # positions are in complications
-#    x = [];
-#    y = []
-#    with open('travellog.csv') as f:
-#        reader = csv.reader(f, delimiter=',', quotechar='|')
-#        for row in reader:
-#            x.append(row[0])
-#    i = 0
-#    while i < rows - 1:
-#        xa = datetime.strptime(x[i + 1], FMT)
-#        xb = datetime.strptime(x[i], FMT)
-#
-#        y.append(xa - xb)
-#
-#    avg = sum(y) / len(y)
-#    long = max(y)
-#
-#    avg = int(avg.total_seconds() / 60)
-#    long = int(long.total_seconds() / 60)
-#
-#    complication(avgpos)
-#    comptext(avgpos, c1t)
-#    compnumber(avgpos, str(avg))
-#
-#    complication(longpos)
-#    comptext(longpos, c2t)
-#    compnumber(longpos, str(long))
-
+def avgcomp():  # positions are in complications
+    zd1 = []
+    with open('travellog.csv') as csvfile:
+        reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+        for row in reader:
+            if row[2] != 0:
+                zd1.append(row[2])
+    complications(2)
+    compnumber(2, str(int(sum(zd1) / len(zd1))))
+    comptext(2, c2t)
+    pygame.display.flip()
 
 class Violation:
     if not open('violations.txt', 'r+'):
@@ -279,6 +262,11 @@ class Violation:
     def time(self):
         return 0
         #time of last violation
+
+
+
+
+
 
 
 
