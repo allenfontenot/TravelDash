@@ -233,7 +233,7 @@ def avgcomp():  # positions are in complications
     with open('travellog.csv') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='|')
         for row in reader:
-            if row[2] != 0:
+            if row[2] != '0':
                 zd1.append(int(row[2]))
     print zd1
     a = sum(zd1) / len(zd1)
