@@ -6,7 +6,7 @@ from background import findLastTime
 
 print"simpush"
 outputFile = open('travellog.csv', 'a')
-now = datetime.now()
+now = datetime.datetime.now()
 
 lt1 = datetime.datetime.strptime(findLastTime(1), FMT)
 td1 = now - lt1

@@ -2,13 +2,14 @@
 
 import csv
 from settings import *
-from datetime import datetime
+import datetime
+from background import findLastTime
 
 
 def interrupt1(channel):
         print"falling edge 2"
         outputFile = open('travellog.csv', 'a')
-        now = datetime.now()
+        now = datetime.datetime.now()
         lt = datetime.datetime.strptime(findLastTime(1), FMT)
         td = now - lt
         e = int(td.total_seconds() / 60)
@@ -18,7 +19,7 @@ def interrupt1(channel):
 def interrupt2(channel):
         print"falling edge 3"
         outputFile = open('travellog.csv', 'a')
-        now = datetime.now()
+        now = datetime.datetime.now()
         lt = datetime.datetime.strptime(findLastTime(2), FMT)
         td = now - lt
         e = int(td.total_seconds() / 60)
@@ -28,7 +29,7 @@ def interrupt2(channel):
 def interrupt3(channel):
         print"falling edge 4"
         outputFile = open('travellog.csv', 'a')
-        now = datetime.now()
+        now = datetime.datetime.now()
         lt = datetime.datetime.strptime(findLastTime(3), FMT)
         td = now - lt
         e = int(td.total_seconds() / 60)
@@ -38,7 +39,7 @@ def interrupt3(channel):
 def interrupt4(channel):
         print"falling edge 5"
         outputFile = open('travellog.csv', 'a')
-        now = datetime.now()
+        now = datetime.datetime.now()
         lt = datetime.datetime.strptime(findLastTime(4), FMT)
         td = now - lt
         e = int(td.total_seconds() / 60)
@@ -48,7 +49,7 @@ def interrupt4(channel):
 def interrupt5(channel):
         print"falling edge 6"
         outputFile = open('travellog.csv', 'a')
-        now = datetime.now()
+        now = datetime.datetime.now()
         lt = datetime.datetime.strptime(findLastTime(5), FMT)
         td = now - lt
         e = int(td.total_seconds() / 60)
@@ -58,7 +59,7 @@ def interrupt5(channel):
 def interrupt6(channel):
         print"falling edge 7"
         outputFile = open('travellog.csv', 'a')
-        now = datetime.now()
+        now = datetime.datetime.now()
         lt = datetime.datetime.strptime(findLastTime(6), FMT)
         td = now - lt
         e = int(td.total_seconds() / 60)
