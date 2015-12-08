@@ -235,8 +235,9 @@ def avgcomp():  # positions are in complications
         for row in reader:
             if row[2] != 0:
                 zd1.append(row[2])
+    a = int(sum(zd1) / len(zd1))
     complications(2)
-    compnumber(2, str(int(sum(zd1) / len(zd1))))
+    compnumber(2, a)
     comptext(2, c2t)
     pygame.display.flip()
 
