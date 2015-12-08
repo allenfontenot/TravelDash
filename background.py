@@ -235,7 +235,9 @@ def avgcomp():  # positions are in complications
         for row in reader:
             if row[2] != 0:
                 zd1.append(int(row[2]))
+    print zd1
     a = sum(zd1) / len(zd1)
+    print a
     complications(2)
     compnumber(2, a)
     comptext(2, c2t)
