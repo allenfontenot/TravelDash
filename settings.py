@@ -77,12 +77,12 @@ acolor = (52, 152, 219)
 tcolor = bcolor
 
 #fonts(header, footer, title, number, other)
-hf  = pygame.font.SysFont("freesans",64)
-ff  = pygame.font.SysFont("freesans",32)
-tf  = pygame.font.SysFont("freesans",84)
-nf  = pygame.font.SysFont("freesans",148)
-of  = pygame.font.SysFont("freesans",48)
-cf  = pygame.font.SysFont("freesans",64)
+hf = pygame.font.SysFont("freesans",64)
+ff = pygame.font.SysFont("freesans",32)
+tf = pygame.font.SysFont("freesans",84)
+nf = pygame.font.SysFont("freesans",148)
+of = pygame.font.SysFont("freesans",48)
+cf = pygame.font.SysFont("freesans",64)
 cff = pygame.font.SysFont("freesans",24)
 
 #Complication Names
@@ -104,4 +104,4 @@ FMT = '%Y-%m-%d %H:%M:%S.%f'
 
 #initialized variables to not send emails too often
 global tm;global tm2;global lm;global lm2
-tm = tm2 =  0; lm = lm2 =  0;
+tm = tm2 =  0; lm = lm2 =  0

@@ -20,19 +20,19 @@ print"simpush"
 outputFile = open('travellog.csv', 'a')
 now = datetime.datetime.now()
 
-lt1 = datetime.datetime.strptime(findLastTime(1), FMT)
+lt1 = datetime.datetime.strptime(str(findLastTime(1)), FMT)
 td1 = now - lt1
 e1 = int(td1.total_seconds() / 60)
 outputWriter = csv.writer(outputFile)
 outputWriter.writerow([now, zone1, e1, NSN])
 
-lt2 = datetime.datetime.strptime(findLastTime(2), FMT)
+lt2 = datetime.datetime.strptime(str(findLastTime(2)), FMT)
 td2 = now - lt2
 e2 = int(td2.total_seconds() / 60)
 outputWriter = csv.writer(outputFile)
 outputWriter.writerow([now, zone2, 2, NSN])
 
-lt3 = datetime.datetime.strptime(findLastTime(3), FMT)
+lt3 = datetime.datetime.strptime(str(findLastTime(3)), FMT)
 td3 = now - lt3
 e3 = int(td3.total_seconds() / 60)
 outputWriter = csv.writer(outputFile)
