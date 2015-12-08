@@ -86,9 +86,9 @@ cf  = pygame.font.SysFont("freesans",64)
 cff = pygame.font.SysFont("freesans",24)
 
 #Complication Names
-c1t = "Average"
-c2t = "Longest"
-c3t = "Now"
+c1t = "Now"
+c2t = "Average"
+c3t = "Violations"
 
 #Initalized Variables
 time1 = []

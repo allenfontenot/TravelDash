@@ -52,12 +52,11 @@ thenRows = 0
 logcount = 0
 logcount2 = 0
 while True:
-    tnow = datetime.datetime.now().time()
-    offlinetime = datetime.time(7, 30, 0, 0)
+    offlinetime = datetime.time(22, 0, 0, 0)
     onlinetime = datetime.time(4, 0, 0, 0)
     # put time on comnplication 3
     timecomp()
-    while datetime.datetime.now().time() < offlinetime: #or tnow < onlinetime:  # checks for offline from file inserted through cron
+    while datetime.datetime.now().time() > offlinetime or datetime.datetime.now().time() < onlinetime:  # checks for offline from file inserted through cron
         timecomp()
         if logcount2 == 0:
             logging.debug(str(datetime.datetime.now()) + " offline")
