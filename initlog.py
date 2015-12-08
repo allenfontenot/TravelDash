@@ -2,6 +2,7 @@
 import csv
 import datetime
 
+NSN = 'SIM'
 zone1 = 'Lobby'
 zone2 = 'Stockroom'
 zone3 = 'Drive Thru'
