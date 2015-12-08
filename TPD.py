@@ -8,7 +8,7 @@ from interrupts import *
 import datetime
 from pygame.locals import *
 from sendmail import *
-from datetime import timedelta
+import logging
 
 os.putenv('SDL_FBDEV', '/dev/fb1')
 pygame.init()
