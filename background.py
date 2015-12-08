@@ -234,7 +234,7 @@ def avgcomp():  # positions are in complications
         reader = csv.reader(csvfile, delimiter=',', quotechar='|')
         for row in reader:
             if row[2] == '0':
-
+                reader.next()
             else:
                 zd1.append(int(row[2]))
     print zd1
