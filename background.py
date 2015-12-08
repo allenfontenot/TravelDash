@@ -234,7 +234,7 @@ def avgcomp():  # positions are in complications
         reader = csv.reader(csvfile, delimiter=',', quotechar='|')
         for row in reader:
             if row[2] != 0:
-                zd1.append(row[2])
+                zd1.append(int(row[2]))
     a = sum(zd1) / len(zd1)
     complications(2)
     compnumber(2, a)
