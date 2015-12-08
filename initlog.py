@@ -9,6 +9,8 @@ time1=[]
 time2=[]
 time3=[]
 
+FMT = '%Y-%m-%d %H:%M:%S.%f'
+
 def findLastTime(zone):
     with open('travellog.csv') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='|')
