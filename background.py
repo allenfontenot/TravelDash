@@ -243,7 +243,8 @@ def avgcomp():  # positions are in complications
     compnumber(2, a)
     comptext(2, c2t)
 
-def vionumber(vcount=None):
+def vionumber():
+    vcount = 0
     with open('violations.csv') as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar = '|')
         for row in reader:
