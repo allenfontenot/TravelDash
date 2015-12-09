@@ -103,7 +103,7 @@ while True:
         lastTime[i] = findLastTime(j)
         q = datetime.datetime.strptime(lastTime[i], FMT)
         r = currentTime - q
-        e = int(r.total_seconds())# / 60)
+        e = int(r.total_seconds())
         ltsec.append(e)
         if e < yellowLimit:
             color = green
@@ -123,7 +123,7 @@ while True:
         lvl = 1
         tm = datetime.datetime.now()  # this mail is now
 
-        if lm + timedelta(0, tba/60) < tm:
+        if lm + timedelta(0, tba) < tm:
             sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
             print "level 1 email sent at " + str(datetime.datetime.now())
             logging.debug(str(datetime.datetime.now()) + " level 1 email sent")
@@ -134,7 +134,7 @@ while True:
         lvl = 2
         tm2 = datetime.datetime.now()  # this mail is now
 
-        if lm2 + timedelta(0, tba/60) < tm: #check for last email sent and don't send if within tba
+        if lm2 + timedelta(0, tba) < tm: #check for last email sent and don't send if within tba
             sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
             print "level 2 email sent at " + str(datetime.datetime.now())
             logging.debug(str(datetime.datetime.now()) + " level 2 email sent")
