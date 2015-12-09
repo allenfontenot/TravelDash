@@ -103,7 +103,7 @@ while True:
         lastTime[i] = findLastTime(j)
         q = datetime.datetime.strptime(lastTime[i], FMT)
         r = currentTime - q
-        e = int(r.total_seconds() / 60)
+        e = int(r.total_seconds())# / 60)
         ltsec.append(e)
         if e < yellowLimit:
             color = green
