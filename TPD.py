@@ -118,15 +118,12 @@ while True:
     lcd.blit(background, (0, 0))
     pygame.display.flip()
 
-    for i in range(3):
-        print lastTime[i]
-        print ltsec[i]
     # notify(lm)
     if ltsec[0] >= mailtimeLevel1 or ltsec[1] >= mailtimeLevel1 or ltsec[2] >= mailtimeLevel1:
         lvl = 1
         tm = datetime.datetime.now()  # this mail is now
 
-        if lm + timedelta(0, tba) < tm:
+        if lm + timedelta(0, tba/60) < tm:
             sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
             print "level 1 email sent at " + str(datetime.datetime.now())
             logging.debug(str(datetime.datetime.now()) + " level 1 email sent")
@@ -137,7 +134,7 @@ while True:
         lvl = 2
         tm2 = datetime.datetime.now()  # this mail is now
 
-        if lm2 + timedelta(0, tba) < tm: #check for last email sent and don't send if within tba
+        if lm2 + timedelta(0, tba/60) < tm: #check for last email sent and don't send if within tba
             sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
             print "level 2 email sent at " + str(datetime.datetime.now())
             logging.debug(str(datetime.datetime.now()) + " level 2 email sent")
