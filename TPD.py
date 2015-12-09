@@ -117,9 +117,13 @@ while True:
     lcd.blit(background, (0, 0))
     pygame.display.flip()
 
+    ltsec = []
+    for i in range(3):
+        ltsec[i] = int(lastTime[i].totalseconds()*60)
+
     print lastTime[0], lastTime[2], lastTime[1]
     # notify(lm)
-    if lastTime[0] >= mailtimeLevel1 or lastTime[1] >= mailtimeLevel1 or lastTime[2] >= mailtimeLevel1:
+    if ltsec[0] >= mailtimeLevel1 or ltsec[1] >= mailtimeLevel1 or ltsec[2] >= mailtimeLevel1:
         lvl = 1
         tm = datetime.datetime.now()  # this mail is now
 
@@ -130,7 +134,7 @@ while True:
             lm = tm
             Violation(datetime.datetime.now(), 'zone', lvl, max(lastTime))
 
-    if lastTime[0] >= mailtimeLevel2 or lastTime[1] >= mailtimeLevel2 or lastTime[2] >= mailtimeLevel2:
+    if ltsec[0] >= mailtimeLevel2 or ltsec[1] >= mailtimeLevel2 or ltsec[2] >= mailtimeLevel2:
         lvl = 2
         tm2 = datetime.datetime.now()  # this mail is now
 
