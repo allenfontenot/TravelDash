@@ -21,6 +21,7 @@ redLimit = 120
 #time to wait to send notification
 mailtimeLevel1 = 135
 mailtimeLevel2 = 240
+mailtimeLevel3 = mailtimeLevel2
 #minimum time between email alerts in seconds 30min = 1800
 tba = 1800
 ##

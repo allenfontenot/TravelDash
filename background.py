@@ -243,6 +243,7 @@ def avgcomp():  # positions are in complications
     compnumber(2, a)
     comptext(2, c2t)
 
+
 def viocomp():
     complications(3)
     compnumber(2,Violation.count)
@@ -255,7 +256,7 @@ class Violation:
         for row in reader:
             vcount += 1
 
-    def __init__(self, time, zone, level,elapsed):
+    def __init__(self, time, zone, level, elapsed):
         self.time = time
         self.zone = zone
         self.level = level
@@ -271,80 +272,6 @@ class Violation:
     def time(self):
         return 0
         #time of last violation
-
-class Notify:
-
-    with open('emaillevel1.txt', 'r') as f1:
-        emaillevel1 = f1.readlines()
-    with open('emaillevel2.txt', 'r') as f2:
-        emaillevel2 = f2.readlines()
-    with open('emaillevel3.txt', 'r') as f3:
-        emaillevel3 = f3.readlines()
-
-    def __init__(self,elapsed1,elapsed2,elapsed3):
-        self.elapsed1 = elapsed1
-        self.elapsed2 = elapsed2
-        self.elapsed3 = elapsed3
-
-
-    def timesince(self,time):
-        t = datetime.now()
-        return t - time
-
-    def emaillist(self,level):
-        if level == 1:
-            return emaillevel1
-        elif level == 2:
-            return emaillevel2
-        elif level == 3:
-            return emaillevel3
-        else:
-            return 'not a valid level'
-
-    def sendemail(self,level,z1time,z2time,z3time,store):
-
-        l1m = []
-        l2m = []
-        l3m = []
-
-        fromaddr = 'travelpathnotcomplete@gmail.com'
-        msg = 'Last Travel Paths at ' + str(store) + '\nZone 1: ' + str(z1time) + ' minutes ago \nZone 2: ' + str(z2time) + ' minutes ago \nZone 3: ' + str(z3time) + ' minutes ago'
-        msg2 = str(store) + " " + str(z1time)
-        username = 'travelpathnotcomplete@gmail.com'
-        password = 'gehrig10'
-        server = smtplib.SMTP('smtp.gmail.com:587')
-
-        #fills array with emails in files. must be one per line
-        with open('emaillevel1.txt', 'r') as f:
-            l1m = [line.strip() for line in f]
-
-        with open('emaillevel2.txt', 'r') as f:
-                        l2m = [line.strip() for line in f]
-
-        with open('emaillevel3.txt', 'r') as f:
-                    l3m = [line.strip() for line in f]
-
-        server.starttls()
-            server.login(username,password)
-
-        #send one email for each address in array
-        if   level == 1:
-            for elem in l1m:
-                toaddr = elem
-                server.sendmail(fromaddr, toaddr, msg)
-        elif level == 2:
-            for elem in l2m:
-                            toaddr = elem
-                            server.sendmail(fromaddr, toaddr, msg)
-
-        elif level == 3:
-            for elem in l3m:
-                            toaddr = elem
-                            server.sendmail(fromaddr, toaddr, msg)
-        elif level == 5:
-            toaddr = "allen.fontenot@gmail.com"
-            server.sendmail(fromaddr, toaddr, msg2)
-            server.quit()
 
 
 ######interrupts###########

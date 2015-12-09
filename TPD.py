@@ -15,20 +15,20 @@ pygame.init()
 
 # Initialize GPIO
 GPIO.setmode(GPIO.BCM)
-GPIO.setup( 2, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-GPIO.setup( 3, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-GPIO.setup( 4, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-GPIO.setup(14, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-GPIO.setup(15, GPIO.IN, pull_up_down = GPIO.PUD_UP)
-GPIO.setup(18, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+GPIO.setup(2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(3, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(4, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(14, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(15, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # interrupt pin setup
-GPIO.add_event_detect( 2, GPIO.FALLING, callback = interrupt1, bouncetime=300)
-GPIO.add_event_detect( 3, GPIO.FALLING, callback = interrupt2, bouncetime=300)
-GPIO.add_event_detect( 4, GPIO.FALLING, callback = interrupt3, bouncetime=300)
-GPIO.add_event_detect(14, GPIO.FALLING, callback = interrupt4, bouncetime=300)
-GPIO.add_event_detect(15, GPIO.FALLING, callback = interrupt5, bouncetime=300)
-GPIO.add_event_detect(18, GPIO.FALLING, callback = interrupt6, bouncetime=300)
+GPIO.add_event_detect(2, GPIO.FALLING, callback=interrupt1, bouncetime=300)
+GPIO.add_event_detect(3, GPIO.FALLING, callback=interrupt2, bouncetime=300)
+GPIO.add_event_detect(4, GPIO.FALLING, callback=interrupt3, bouncetime=300)
+GPIO.add_event_detect(14, GPIO.FALLING, callback=interrupt4, bouncetime=300)
+GPIO.add_event_detect(15, GPIO.FALLING, callback=interrupt5, bouncetime=300)
+GPIO.add_event_detect(18, GPIO.FALLING, callback=interrupt6, bouncetime=300)
 
 logging.basicConfig(filename='debug.log', level=logging.DEBUG)
 
@@ -58,12 +58,21 @@ while True:
             logging.debug(str(datetime.datetime.now()) + " offline")
             sendmail("offline", 0, 0, NSN, 5)
             print str(datetime.datetime.now()) + " offline"
-            circles(1, red); circles(2, red); circles(3, red)
-            footers(1); footers(2); footers(3)
-            number(1, "offline"); number(2, "offline"); number(3, "offline")
-            complications(1); complications(2)
-            comptext(1, c1t); comptext(2, c2t)
-            compnumber(1, "offline"); compnumber(2, "offline")
+            circles(1, red);
+            circles(2, red);
+            circles(3, red)
+            footers(1);
+            footers(2);
+            footers(3)
+            number(1, "offline");
+            number(2, "offline");
+            number(3, "offline")
+            complications(1);
+            complications(2)
+            comptext(1, c1t);
+            comptext(2, c2t)
+            compnumber(1, "offline");
+            compnumber(2, "offline")
             logcount2 = 1
 
         # EXIT#
@@ -89,7 +98,7 @@ while True:
     viocomp()
     pygame.display.flip()
 
-    if logcount == 0: #online notification first time through
+    if logcount == 0:  # online notification first time through
         logging.debug(str(datetime.datetime.now()) + " online")
         sendmail("online", 0, 0, NSN, 5)
         logcount = 1
@@ -109,34 +118,34 @@ while True:
             color = yellow
         else:
             color = red
-        notify(lastTime[i])
-        circles(j, color);  footers(j); number(j, e)
+        circles(j, color)
+        footers(j)
+        number(j, e)
+
     lcd.blit(background, (0, 0))
     pygame.display.flip()
-    logcount2 = 0
 
-
-
-
-"""        # notify(lm)
-        if thenMinutes[0] >= mailtimeLevel1 or thenMinutes[1] >= mailtimeLevel1 or thenMinutes[2] >= mailtimeLevel1:
-            lvl = 1
-            tm = time.time()  # this mail is now
-            tslm = tm - lm  # time since last mail = this mail - last mail
-            if tslm > tba:  # time between alerts in seconds 30min = 1800
-                sendmail(thenMinutes[0], thenMinutes[1], thenMinutes[2], NSN, lvl)
-                print "level 1 email sent at " + str(datetime.datetime.now())
-                logging.debug(str(datetime.datetime.now()) + " level 1 email sent")
-                lm = tm
-                Violation(datetime.datetime.now(), 'zone', lvl)
+    # notify(lm)
+    if lastTime[0] >= mailtimeLevel1 or lastTime[1] >= mailtimeLevel1 or lastTime[2] >= mailtimeLevel1:
+        lvl = 1
+        tm = datetime.time.time()  # this mail is now
+        tslm = tm - lm  # time since last mail = this mail - last mail
+        if tslm > tba:  # time between alerts in seconds 30min = 1800
+            sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
+            print "level 1 email sent at " + str(datetime.datetime.now())
+            logging.debug(str(datetime.datetime.now()) + " level 1 email sent")
+            lm = tm
+            Violation(datetime.datetime.now(), 'zone', lvl, max(lastTime))
             # level two email
-        if thenMinutes[0] >= mailtimeLevel2 or thenMinutes[1] >= mailtimeLevel2 or thenMinutes[2] >= mailtimeLevel2:
-            lvl = 2
-            tm2 = time.time()  # this mail is now
-            tslm2 = tm2 - lm2  # time since last mail = this mail - last mail
-            if tslm2 > tba:  # time between alerts in seconds 30min = 1800
-                sendmail(thenMinutes[0], thenMinutes[1], thenMinutes[2], NSN, lvl)
-                print "level 2 email sent at " + str(datetime.datetime.now())
-                logging.debug(str(datetime.datetime.now()) + " level 2 email sent")
-                lm2 = tm2
-                Violation(datetime.datetime.now(), 'zone', lvl)"""
+    if lastTime[0] >= mailtimeLevel2 or lastTime[1] >= mailtimeLevel2 or lastTime[2] >= mailtimeLevel2:
+        lvl = 2
+        tm2 = datetime.time.time()  # this mail is now
+        tslm2 = tm2 - lm2  # time since last mail = this mail - last mail
+        if tslm2 > tba:  # time between alerts in seconds 30min = 1800
+            sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
+            print "level 2 email sent at " + str(datetime.datetime.now())
+            logging.debug(str(datetime.datetime.now()) + " level 2 email sent")
+            lm2 = tm2
+            Violation(datetime.datetime.now(), 'zone', lvl, max(lastTime))
+
+    logcount2 = 0
