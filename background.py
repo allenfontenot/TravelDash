@@ -253,8 +253,8 @@ def vionumber():
 
 def viocomp():
     complications(3)
-    compnumber(2,vionumber())
-    comptext(2, c2t)
+    compnumber(3,vionumber())
+    comptext(3, c2t)
 
 
 class Violation:
