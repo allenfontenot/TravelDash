@@ -97,13 +97,14 @@ while True:
 
     currentTime = datetime.datetime.now()
     # subtract stored time from current
-
+    ltsec = []
     for i in range(3):
         j = i + 1
         lastTime[i] = findLastTime(j)
         q = datetime.datetime.strptime(lastTime[i], FMT)
         r = currentTime - q
         e = int(r.total_seconds() / 60)
+        ltsec[i] = e
         if e < yellowLimit:
             color = green
         elif redLimit > e >= yellowLimit:
@@ -117,10 +118,7 @@ while True:
     lcd.blit(background, (0, 0))
     pygame.display.flip()
 
-    ltsec = []
     for i in range(3):
-        q = datetime.datetime.strptime(lastTime[i], FMT)
-        ltsec[i] = int(q.totalseconds()*60)
         print lastTime[i]
         print ltsec[i]
     # notify(lm)
