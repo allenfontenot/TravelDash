@@ -131,7 +131,7 @@ while True:
         lvl = 1
         tm = datetime.datetime.now()  # this mail is now
         tslm = tm - lm  # time since last mail = this mail - last mail
-        if tslm > tba:  # time between alerts in seconds 30min = 1800
+        if tslm > timedelta(0,tba):  # time between alerts in seconds 30min = 1800
             sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
             print "level 1 email sent at " + str(datetime.datetime.now())
             logging.debug(str(datetime.datetime.now()) + " level 1 email sent")
