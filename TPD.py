@@ -119,9 +119,10 @@ while True:
 
     ltsec = []
     for i in range(3):
-        ltsec[i] = int(lastTime[i].totalseconds()*60)
-
-    print lastTime[0], lastTime[2], lastTime[1]
+        q = datetime.datetime.strptime(lastTime[i], FMT)
+        ltsec[i] = int(q.totalseconds()*60)
+        print lastTime[i]
+        print ltsec[i]
     # notify(lm)
     if ltsec[0] >= mailtimeLevel1 or ltsec[1] >= mailtimeLevel1 or ltsec[2] >= mailtimeLevel1:
         lvl = 1
