@@ -9,6 +9,7 @@ import datetime
 from pygame.locals import *
 from sendmail import *
 import logging
+from datetime import timedelta
 
 os.putenv('SDL_FBDEV', '/dev/fb1')
 pygame.init()
@@ -41,8 +42,8 @@ closed = os.path.exists('imhere.txt')
 writePidFile()
 
 # mail timers for not spamming notifications
-tm = tm2 = 0
-lm = lm2 = 0
+tm = tm2 = timedelta(0)
+lm = lm2 = timedelta(0)
 thenRows = 0
 logcount = 0
 logcount2 = 0
