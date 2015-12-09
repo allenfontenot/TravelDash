@@ -130,19 +130,19 @@ while True:
     if lastTime[0] >= mailtimeLevel1 or lastTime[1] >= mailtimeLevel1 or lastTime[2] >= mailtimeLevel1:
         lvl = 1
         tm = datetime.datetime.now()  # this mail is now
-        tslm = tm - lm  # time since last mail = this mail - last mail
-        if tslm > timedelta(0,tba):  # time between alerts in seconds 30min = 1800
+
+        if lm + timedelta(0, tba) < tm:
             sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
             print "level 1 email sent at " + str(datetime.datetime.now())
             logging.debug(str(datetime.datetime.now()) + " level 1 email sent")
             lm = tm
             Violation(datetime.datetime.now(), 'zone', lvl, max(lastTime))
-            # level two email
+
     if lastTime[0] >= mailtimeLevel2 or lastTime[1] >= mailtimeLevel2 or lastTime[2] >= mailtimeLevel2:
         lvl = 2
-        tm2 = datetime.datetime.now().time  # this mail is now
-        tslm2 = tm2 - lm2  # time since last mail = this mail - last mail
-        if tslm2 > tba:  # time between alerts in seconds 30min = 1800
+        tm2 = datetime.datetime.now()  # this mail is now
+
+        if lm2 + timedelta(0, tba) < tm: #check for last email sent and don't send if within tba
             sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
             print "level 2 email sent at " + str(datetime.datetime.now())
             logging.debug(str(datetime.datetime.now()) + " level 2 email sent")
@@ -150,3 +150,5 @@ while True:
             Violation(datetime.datetime.now(), 'zone', lvl, max(lastTime))
 
     logcount2 = 0
+
+datetime.datetime.minute(30)
