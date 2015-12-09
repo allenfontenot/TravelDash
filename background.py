@@ -231,14 +231,13 @@ def writePidFile():
 def avgcomp():  # positions are in complications
     zd1 = []
     with open('travellog.csv') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',', quotechar='|')
-        for row in reader:
-            if row[2] == '0':
-                i= row[2]
-            else:
-                zd1.append(int(row[2]))
+            reader = csv.reader(csvfile, delimiter=',', quotechar='|')
+            for row in reader:
+                    a = int(row[2])
+                    zd1.append(a)
 
-    a = sum(zd1) / len(zd1)
+    zd2 = filter(lambda a: a != 0, zd1) #takes out the zeroes
+    a = sum(zd2) / len(zd2)
     complications(2)
     compnumber(2, a)
     comptext(2, c2t)
