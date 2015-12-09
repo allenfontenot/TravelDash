@@ -258,10 +258,7 @@ def viocomp():
 
 
 class Violation:
-    with open('violations.csv') as csvfile:
-        reader = csv.reader(csvfile, delimiter=',', quotechar = '|')
-        for row in reader:
-            vcount += 1
+
 
     def __init__(self, time, zone, level, elapsed):
         self.time = time
@@ -272,9 +269,6 @@ class Violation:
         ow = csv.writer(o)
         ow.writerow([self.time,self.elapsed, self.zone, self.level])
         o.close()
-
-    def count(self):
-        return Violation.vcount
 
     def time(self):
         return 0
