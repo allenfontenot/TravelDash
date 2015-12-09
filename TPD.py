@@ -128,7 +128,7 @@ while True:
     # notify(lm)
     if lastTime[0] >= mailtimeLevel1 or lastTime[1] >= mailtimeLevel1 or lastTime[2] >= mailtimeLevel1:
         lvl = 1
-        tm = datetime.datetime.now().time  # this mail is now
+        tm = datetime.datetime.now()  # this mail is now
         tslm = tm - lm  # time since last mail = this mail - last mail
         if tslm > tba:  # time between alerts in seconds 30min = 1800
             sendmail(lastTime[0], lastTime[1], lastTime[2], NSN, lvl)
