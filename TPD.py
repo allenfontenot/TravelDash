@@ -41,9 +41,9 @@ closed = os.path.exists('imhere.txt')
 # store pid to file
 writePidFile()
 
-# mail timers for not spamming notifications
-tm = tm2 = timedelta(0)
-lm = lm2 = timedelta(0)
+# mail timers for not spamming notifications initialized for first pass
+tm = tm2 = datetime.datetime(1999,1,1,0,0,0,0)
+lm = lm2 = datetime.datetime(1999,1,1,0,0,0,0)
 thenRows = 0
 logcount = 0
 logcount2 = 0
